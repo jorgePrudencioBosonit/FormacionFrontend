@@ -1,0 +1,17 @@
+*{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    line-height: 90%;
+}
+
+.button{
+    background-color: #1E90FF;
+    color: white;
+    padding: 1em;
+    border: none;
+    outline:none;
+}
+
+.button:hover{
+    background-color: #0000CD;
+    cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="seccion">
+        <p id="numContador">0</p>
+    </div>
+    <div class="seccion">
+        <p class="nombreSeccion">Setup</p>
+        <button name="start" id="start" class="button">start</button>
+        <button name="pause" id="pause" class="button">pause</button>
+        <button name="reset" id="reset" class="button">reset</button>
+    </div>
+    <div class="seccion">
+        <p class="nombreSeccion">Count</p>
+        <button name="countUp" id="countUp" class="button">count up</button>
+        <button name="countDown" id="countDown" class="button">count down</button>
+    </div>
+    <div class="seccion">
+        <p class="nombreSeccion">Set to</p>
+        <input type="number" name="inicioContador" id="inicioContador" value="0">
+    </div>
+    <div class="seccion">
+        <p class="nombreSeccion">Step</p>
+        <input type="number" name="incrementoContador" id="incrementoContador" value="1" min="1" oninput="this.value = Math.abs(this.value)">
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
