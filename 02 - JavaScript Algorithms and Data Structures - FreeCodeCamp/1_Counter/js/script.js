@@ -32,13 +32,13 @@ function pausaContador() {
 
 //evento btnStart
 btnStart.addEventListener("click", () => {
-    if(!estaContando)
+    if (!estaContando)
         startContador();
 });
 
 //evento btnPause
 btnPause.addEventListener("click", () => {
-    if(estaContando)
+    if (estaContando)
         pausaContador();
 });
 
@@ -50,13 +50,13 @@ btnReset.addEventListener("click", () => {
 
 //evento btnCountUp
 btnCountUp.addEventListener("click", () => {
-    if(saltoContador < 0)
-    saltoContador = Math.abs(saltoContador);
+    if (saltoContador < 0)
+        saltoContador = Math.abs(saltoContador);
 });
 
 //evento btnCountDown
 btnCountDown.addEventListener("click", () => {
-    if(saltoContador > 0)
+    if (saltoContador > 0)
         saltoContador = saltoContador * -1;
 });
 

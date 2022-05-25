@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Buscador de universidades</h1>
+
+        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+        <label class="btn btn-primary" for="option1" onclick="cambiarPais('spain')">España</label>
+
+        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+        <label class="btn btn-primary" for="option2" onclick="cambiarPais('united kingdom')">Reino Unido</label>
+
+        <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+        <label class="btn btn-primary" for="option3" onclick="cambiarPais('portugal')">Portugal</label>
+
+        <input type="text" id="formulario" class="form-control my-2">
+
+        <div id="app"></div>
+    </div>
+
+    <script>
+        const API_URL = "http://universities.hipolabs.com";
+
+        const HTMLResponse = document.querySelector('#app');
+        const ul = document.createDocumentFragment();
+
+        const formulario = document.querySelector('#formulario');
+        var universidad = formulario.value.toLowerCase();
+        var pais = "Spain";
+        formulario.addEventListener('keyup', actualizarDatos);
+
+        function cambiarPais(nuevoPais) {
+            pais = nuevoPais;
+        }
+
+        function actualizarDatos() {
+            HTMLResponse.innerHTML = '';
+
+            universidad = formulario.value.toLowerCase();
+            fetch(`${API_URL}/search?name=${universidad}&country=${pais}`)
+                .then((response) => response.json())
+                .then((universities) => {
+                    universities.forEach(university => {
+                        let elem = document.createElement('li');
+                        elem.appendChild(
+                            document.createTextNode(`${university.name}`)
+                        );
+                        ul.appendChild(elem);
+                    });
+                    HTMLResponse.appendChild(ul);
+                });
+        }
+    </script>
+</body>
+
+</html>
